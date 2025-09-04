@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import { PrismaClient } from "@prisma/client";
+import shoppingRoutes from "./routes/shopping.js";
+import chatRoutes from "./routes/chat.js";
 
 dotenv.config();
 
@@ -22,6 +24,9 @@ app.use(
   })
 );
 
+app.use("/api/products", shoppingRoutes);
+app.use("/api/chat", chatRoutes);
+
 const connectMongoDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
@@ -36,8 +41,8 @@ app.listen(PORT, async () => {
   await connectMongoDB();
 
   try {
-    // await prisma.$connect();
-    // console.log("Connected to Azure SQL via Prisma!");
+    await prisma.$connect();
+    console.log("Connected to Azure SQL via Prisma!");
   } catch (err) {
     console.error("Prisma connection error:", err);
   }
