@@ -17,7 +17,7 @@ async function getGeminiResponse(prompt, lang = "en") {
           contents: [
             {
               role: "user",
-              parts: [{ text: `Reply in Malayalam: ${prompt}` }],
+              parts: [{ text: `Reply in English: ${prompt}` }],
             },
           ],
         }),

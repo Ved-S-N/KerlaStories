@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { PrismaClient } from "@prisma/client";
 import shoppingRoutes from "./routes/shopping.js";
 import chatRoutes from "./routes/chat.js";
+import schemesRoutes from "./routes/schemes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(
 
 app.use("/api/products", shoppingRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/schemes", schemesRoutes);
 
 const connectMongoDB = async () => {
   try {

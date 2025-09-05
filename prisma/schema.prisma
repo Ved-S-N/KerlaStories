@@ -41,13 +41,15 @@ model Product {
 }
 
 model Scheme {
-  id          Int    @id @default(autoincrement())
-  title       String
-  description String
-  category    String
-  minIncome   Int?
-  maxIncome   Int?
-  eligibility String
+  id           Int      @id @default(autoincrement())
+  name         String
+  income_limit Int? // nullable for "none"
+  crop_type    String   @default("all")
+  region       String   @default("all")
+  deadline     String   @default("ongoing")
+  description  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   userSchemes UserSchemeEligibility[]
 }
